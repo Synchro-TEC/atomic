@@ -1,0 +1,1 @@
+The `<Button>` component is a button.

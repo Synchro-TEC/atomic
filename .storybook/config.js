@@ -9,7 +9,7 @@ import { setOptions } from '@storybook/addon-options';
 import './index.css';
 
 setOptions({
-  name: 'Molecule',
+  name: 'Atomic',
   // url: 'https://storybook.gumgum.com',
   goFullScreen: false,
   showStoriesPanel: true,

@@ -1,0 +1,1 @@
+The `<LinkButton>` component is a button.

@@ -25,6 +25,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "eslint": "^5.5.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.14.2",
     "prop-types": "^15.6.2",
@@ -35,5 +37,7 @@
     "storybook-readme": "^4.0.0-beta1",
     "style-loader": "^0.23.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "classnames": "^2.2.6"
+  }
 }
