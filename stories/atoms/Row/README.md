@@ -1,1 +1,1 @@
-The `<LinkButton>` component is a button.
+The `<Row>` and `<Col>` component.

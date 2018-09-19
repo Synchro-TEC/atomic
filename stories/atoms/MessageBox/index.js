@@ -4,27 +4,23 @@ import { action } from '@storybook/addon-actions';
 import { optionalSelect } from '../../../utils/optionalSelect';
 
 import readme from './README.md';
-import Button from '../../../components/Button';
+import MessageBox from '../../../components/MessageBox';
 
 const options = {
-  default: 'default',
-  primary: 'primary',
   info: 'info',
+  success: 'success',
   warning: 'warning',
-  danger: 'danger',
+  error: 'error',
 };
+
 const component = () => (
-  <Button
+  <MessageBox
     theme={optionalSelect('Theme', options, '')}
-    outline={boolean('Outline', false)}
-    full={boolean('Full', false)}
-    small={boolean('Small', false)}
-    className={text('ClassName', '')}
-    style={object('Style', {})}
-    onClick={action('button_clicked')}
+    onClose={action('close clicked')}
+    title={text('Title', 'Title')}
   >
-    My Button
-  </Button>
+    Message
+  </MessageBox>
 );
 
 export default [readme, component];

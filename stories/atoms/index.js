@@ -1,25 +1,32 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import { withReadme } from "storybook-readme";
-import { withKnobs } from "@storybook/addon-knobs";
-import { withInfo } from "@storybook/addon-info";
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withReadme } from 'storybook-readme';
+import { withKnobs } from '@storybook/addon-knobs';
+import { withInfo } from '@storybook/addon-info';
 
-import Button from "./Button/";
-import LinkButton from "./LinkButton/";
-import Row from "./Row/";
-const stories = storiesOf("Atoms", module);
+import Button from './Button/';
+import LinkButton from './LinkButton/';
+import Row from './Row/';
+import Loader from './Loader/';
+import Tag from './Tag/';
+import MessageBox from './MessageBox/';
+
+const stories = storiesOf('Atoms', module);
 
 const storyWrapper = story => {
-  return <div style={{ margin: "35px" }}>{story()}</div>;
+  return <div style={{ margin: '35px' }}>{story()}</div>;
 };
 
 stories
-  .addDecorator((story, context) => withInfo("")(story)(context))
+  .addDecorator((story, context) => withInfo('')(story)(context))
   .addDecorator(storyWrapper)
   .addDecorator(withKnobs)
-  .add("Button", withReadme(...Button))
-  .add("Link Button", withReadme(...LinkButton))
-  .add("Row", withReadme(...Row));
+  .add('Button', withReadme(...Button))
+  .add('Link Button', withReadme(...LinkButton))
+  .add('Grid System', withReadme(...Row))
+  .add('Loader', withReadme(...Loader))
+  .add('Tag', withReadme(...Tag))
+  .add('MessageBox', withReadme(...MessageBox));
 // .add('ButtonGroup', withReadme(...ButtonGroup))
 // .add('CircularThumbnail', withReadme(...CircularThumbnail))
 // .add('FormGroupLabel', withReadme(...FormGroupLabel))

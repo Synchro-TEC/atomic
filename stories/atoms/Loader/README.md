@@ -1,0 +1,1 @@
+The `<Loader>` component is a loader.
