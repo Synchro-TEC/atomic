@@ -2,28 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const TextField = ({ label, onChange, children, ...otherProps }) => {
-  const baseClass = `sv-tag ${theme}`;
-  const rootClass = cx(baseClass, className);
+const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage }) => {
+  let labelOpts = {};
+
+  if (hintInfo) {
+    labelOpts['data-info'] = hintInfo;
+  }
+
+  if (errorMessage) {
+    labelOpts['data-error'] = errorMessage;
+  }
+
+  const rootClass = cx({ 'is--invalid': errorMessage });
+
+  let inputOptions = {
+    type: type,
+    onChange: onChange,
+    className: rootClass,
+  };
+
+  if (disabled) {
+    inputOptions.disabled = disabled;
+  }
 
   return (
     <label>
-      <span data-info="(8 caracters)" data-error="Cep inválido">
-        {label}
-      </span>
-      <input type="text" className="is--invalid" onChange={onChange} />
+      <span {...labelOpts}>{label}</span>
+      <input {...inputOptions} />
     </label>
   );
 };
 
 TextField.defaultProps = {
-  theme: 'default',
+  type: 'text',
+  disabled: false,
 };
 
 TextField.propTypes = {
+  errorMessage: PropTypes.string,
+  disabled: PropTypes.bool,
+  hintInfo: PropTypes.string,
   label: PropTypes.string,
-  onClose: PropTypes.func,
-  theme: PropTypes.oneOf(['default', 'primary', 'danger', 'info', 'warning']),
+  onChange: PropTypes.func,
+  type: PropTypes.oneOf(['text', 'email', 'password']),
 };
 
 export default TextField;

@@ -10,6 +10,7 @@ import Row from './Row/';
 import Loader from './Loader/';
 import Tag from './Tag/';
 import MessageBox from './MessageBox/';
+import TextField from './TextField/';
 
 const stories = storiesOf('Atoms', module);
 
@@ -26,7 +27,8 @@ stories
   .add('Grid System', withReadme(...Row))
   .add('Loader', withReadme(...Loader))
   .add('Tag', withReadme(...Tag))
-  .add('MessageBox', withReadme(...MessageBox));
+  .add('MessageBox', withReadme(...MessageBox))
+  .add('TextField', withReadme(...TextField));
 // .add('ButtonGroup', withReadme(...ButtonGroup))
 // .add('CircularThumbnail', withReadme(...CircularThumbnail))
 // .add('FormGroupLabel', withReadme(...FormGroupLabel))
