@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage }) => {
+const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage, ...otherProps }) => {
   let labelOpts = {};
 
   if (hintInfo) {
@@ -25,10 +25,12 @@ const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage }) 
     inputOptions.disabled = disabled;
   }
 
+  const inputProps = Object.assign(inputOptions, otherProps);
+
   return (
     <label>
       <span {...labelOpts}>{label}</span>
-      <input {...inputOptions} />
+      <input {...inputProps} />
     </label>
   );
 };

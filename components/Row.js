@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 const Row = ({ className, style, withGutter, children, ...otherProps }) => {
-  const baseClass = withGutter ? "sv-row--with-gutter" : "sv-row";
+  const baseClass = withGutter ? 'sv-row--with-gutter' : 'sv-row';
   const rootClass = cx(baseClass, { withGutter }, className);
 
   return (
