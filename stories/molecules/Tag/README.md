@@ -1,0 +1,1 @@
+The `<Tag>` component is a button.

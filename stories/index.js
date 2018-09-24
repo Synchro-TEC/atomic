@@ -1,1 +1,2 @@
-import './atoms/index'
+import './atoms/index';
+import './molecules/index';

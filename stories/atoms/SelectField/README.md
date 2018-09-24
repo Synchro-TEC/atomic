@@ -1,6 +1,6 @@
 
-```jsx
-    const optionsOne = [
+```js
+    const options = [
        { id: 1, name: 'Option A' },
        ...
      ];
@@ -12,7 +12,7 @@
            errorMessage={text('Name error:', '')}
            hintInfo={text('Hint:', 'Hint Info')}
            onChange={action('on change name')}
-           options={optionsOne}
+           options={options}
            optionText="name"
            optionValue="id"
            disabled={boolean('Disabled', false)}
@@ -22,7 +22,7 @@
            label="Name"
            optionText={d => `${d.id} - ${d.name}`}
            onChange={action('on change name')}
-           options={optionsOne}
+           options={options}
            optionValue="id"
          />
        </form>
