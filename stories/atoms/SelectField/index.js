@@ -1,17 +1,8 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import readme from './README.md';
-import Row from '../../../components/Row';
-import Col from '../../../components/Col';
 import SelectField from '../../../components/SelectField';
-import { text, boolean } from '@storybook/addon-knobs';
-import { optionalSelect } from '../../../utils/optionalSelect';
-
-const options = {
-  text: 'text',
-  email: 'email',
-  password: 'password',
-};
+import { boolean, text } from '@storybook/addon-knobs';
 
 const optionsOne = [
   { id: 1, name: 'Option A' },
@@ -23,29 +14,23 @@ const optionsOne = [
 
 const component = () => (
   <form className="sv-form">
-    <Row withGutter={true}>
-      <Col>
-        <SelectField
-          label="Name"
-          errorMessage={text('Name error:', '')}
-          onChange={action('on change name')}
-          options={optionsOne}
-          labelKey="name"
-          valueKey="id"
-        />
-      </Col>
-      {/*<Col>*/}
-      {/*<SelectField label="E-mail" hintInfo={text('E-mail hint:', '')} onChange={action('on change email')} />*/}
-      {/*</Col>*/}
-      {/*<Col>*/}
-      {/*<SelectField*/}
-      {/*label="Phone"*/}
-      {/*hintInfo={text('Phone hint:', '')}*/}
-      {/*errorMessage={text('Phone error', '')}*/}
-      {/*onChange={action('on change phone')}*/}
-      {/*/>*/}
-      {/*</Col>*/}
-    </Row>
+    <SelectField
+      label="Name"
+      errorMessage={text('Name error:', '')}
+      hintInfo={text('Hint:', 'Hint Info')}
+      onChange={action('on change name')}
+      options={optionsOne}
+      optionText="name"
+      optionValue="id"
+      disabled={boolean('Disabled', false)}
+    />
+    <SelectField
+      label="Name"
+      optionText={d => `${d.id} - ${d.name}`}
+      onChange={action('on change name')}
+      options={optionsOne}
+      optionValue="id"
+    />
   </form>
 );
 

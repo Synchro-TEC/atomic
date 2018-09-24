@@ -7,8 +7,8 @@ const SelectField = ({
   label,
   disabled,
   options,
-  valueKey,
-  labelKey,
+  optionValue,
+  optionText,
   onChange,
   hintInfo,
   errorMessage,
@@ -38,8 +38,8 @@ const SelectField = ({
   const selectProps = Object.assign(selectOptions, otherProps);
 
   const optionsForSelect = options.map(opt => (
-    <option key={nanoid()} value={opt[valueKey]}>
-      {opt[labelKey]}
+    <option key={nanoid()} value={typeof optionValue === 'function' ? optionValue(opt) : opt[optionValue]}>
+      {typeof optionText === 'function' ? optionText(opt) : opt[optionText]}
     </option>
   ));
 
@@ -62,8 +62,10 @@ SelectField.defaultProps = {
 
 SelectField.propTypes = {
   options: PropTypes.array,
-  valueKey: PropTypes.string,
-  labelKey: PropTypes.string,
+  /** Pode ser a key do objeto ou uma function que recebe o obejeto corrente como parâmetro e deve retorna um valor */
+  optionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  /** Pode ser a key do objeto ou uma function que recebe o obejeto corrente como parâmetro e deve retorna um valor */
+  optionText: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   errorMessage: PropTypes.string,
   disabled: PropTypes.bool,
   hintInfo: PropTypes.string,

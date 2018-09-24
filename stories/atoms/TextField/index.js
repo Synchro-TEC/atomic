@@ -35,7 +35,6 @@ const component = () => (
       <Col>
         <TextField
           label="Dynamic Field"
-          value="test"
           onChange={action('on change Dynamic Field')}
           type={optionalSelect('Type', options, '')}
           disabled={boolean('Disabled', false)}
