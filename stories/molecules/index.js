@@ -1,10 +1,13 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { setAddon, storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
+import JSXAddon from 'storybook-addon-jsx';
 
-import Tag from './Tag/';
+setAddon(JSXAddon);
+
+import Paginator from './Paginator/';
 
 const stories = storiesOf('Molecules', module);
 
@@ -13,10 +16,10 @@ const storyWrapper = story => {
 };
 
 stories
-  .addDecorator((story, context) => withInfo('')(story)(context))
+  // .addDecorator((story, context) => withInfo('')(story)(context))
   .addDecorator(storyWrapper)
   .addDecorator(withKnobs)
-  .add('Tag', withReadme(...Tag));
+  .addWithJSX('Paginator', withReadme(...Paginator));
 // .add('ButtonGroup', withReadme(...ButtonGroup))
 // .add('CircularThumbnail', withReadme(...CircularThumbnail))
 // .add('FormGroupLabel', withReadme(...FormGroupLabel))
@@ -24,7 +27,7 @@ stories
 // .add('LoadingDots', withReadme(...LoadingDots))
 // .add('NumberCircle', withReadme(...NumberCircle))
 // .add('Select', withReadme(...Select))
-// .add('Tag', withReadme(...Tag))
+// .add('Paginator', withReadme(...Paginator))
 // .add('TextArea', withReadme(...TextArea))
 // .add('TextInput', withReadme(...TextInput))
 // .add('Tooltip', withReadme(...Tooltip))

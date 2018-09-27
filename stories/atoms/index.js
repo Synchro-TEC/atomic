@@ -38,7 +38,7 @@ stories
 // .add('LoadingDots', withReadme(...LoadingDots))
 // .add('NumberCircle', withReadme(...NumberCircle))
 // .add('Select', withReadme(...Select))
-// .add('Tag', withReadme(...Tag))
+// .add('Paginator', withReadme(...Paginator))
 // .add('TextArea', withReadme(...TextArea))
 // .add('TextInput', withReadme(...TextInput))
 // .add('Tooltip', withReadme(...Tooltip))

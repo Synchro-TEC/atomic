@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { optionalSelect } from '../../../utils/optionalSelect';
 
 import readme from './README.md';
-import MessageBox from '../../../components/MessageBox';
+import MessageBox from '../../../components/atoms/MessageBox/MessageBox';
 
 const options = {
   info: 'info',

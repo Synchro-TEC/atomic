@@ -1,9 +1,9 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import readme from './README.md';
-import Row from '../../../components/Row';
-import Col from '../../../components/Col';
-import TextField from '../../../components/TextField';
+import Row from '../../../components/atoms/Row/Row';
+import Col from '../../../components/atoms/Col/Col';
+import TextField from '../../../components/atoms/TextField/TextField';
 import { text, boolean } from '@storybook/addon-knobs';
 import { optionalSelect } from '../../../utils/optionalSelect';
 

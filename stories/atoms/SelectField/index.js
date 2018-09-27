@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import readme from './README.md';
-import SelectField from '../../../components/SelectField';
+import SelectField from '../../../components/atoms/SelectField/SelectField';
 import { boolean, text } from '@storybook/addon-knobs';
 
 const optionsOne = [

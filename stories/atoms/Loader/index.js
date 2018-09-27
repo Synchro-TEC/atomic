@@ -3,7 +3,7 @@ import { boolean } from '@storybook/addon-knobs';
 import { optionalSelect } from '../../../utils/optionalSelect';
 
 import readme from './README.md';
-import Loader from '../../../components/Loader';
+import Loader from '../../../components/atoms/Loader/Loader';
 
 const options = {
   spin: 'spin',

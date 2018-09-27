@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { optionalSelect } from '../../../utils/optionalSelect';
 
 import readme from './README.md';
-import Tag from '../../../components/Tag';
+import Tag from '../../../components/atoms/Tag/Tag';
 
 const options = {
   default: 'default',

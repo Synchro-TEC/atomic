@@ -2,8 +2,8 @@ import React from 'react';
 import { text, boolean, object } from '@storybook/addon-knobs';
 
 import readme from './README.md';
-import Row from '../../../components/Row';
-import Col from '../../../components/Col';
+import Row from '../../../components/atoms/Row/Row';
+import Col from '../../../components/atoms/Col/Col';
 
 const component = () => (
   <div>

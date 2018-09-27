@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { optionalSelect } from '../../../utils/optionalSelect';
 
 import readme from './README.md';
-import LinkButton from '../../../components/LinkButton';
+import LinkButton from '../../../components/atoms/LinkButton/LinkButton';
 
 const options = {
   default: 'default',
