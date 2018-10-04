@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "api": "json-server --watch mock-api/db.json --port 9002"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +39,7 @@
     "style-loader": "^0.23.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "nanoid": "^1.2.3"
   }

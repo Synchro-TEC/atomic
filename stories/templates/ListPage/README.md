@@ -1,0 +1,1 @@
+The `<ListPage>` component is a button.
