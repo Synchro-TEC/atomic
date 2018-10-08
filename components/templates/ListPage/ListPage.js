@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import nanoid from 'nanoid';
 import update from 'react-addons-update';
 import Paginator from '../../molecules/Paginator/Paginator';
+import SimpleSearch from '../../molecules/SimpleSearch/SimpleSearch';
 import Loader from '../../atoms/Loader/Loader';
 
 class ListPage extends Component {
@@ -19,9 +21,14 @@ class ListPage extends Component {
       limit: 10,
       count: null,
       data: [],
+      query: '',
     };
 
+    this.cols = this._extractCols(props);
+
     this._fetch = this._fetch.bind(this);
+    this._typeSearch = this._typeSearch.bind(this);
+    this._searchSubmit = this._searchSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +38,13 @@ class ListPage extends Component {
   _fetch(page = this.state.page) {
     this.setState(update(this.state, { loading: { $set: true } }));
 
-    axios.get(`${this.props.resourceUrl}?page=${page}`).then(response => {
+    let url = `${this.props.resourceUrl}?page=${page}`;
+
+    if (this.state.query.trim() !== '') {
+      url += `&search=${this.state.query}`;
+    }
+
+    axios.get(url).then(response => {
       const data = response.data[this.resultKey];
       const newState = update(this.state, {
         loaded: { $set: true },
@@ -45,14 +58,23 @@ class ListPage extends Component {
   }
 
   _goTo(pager) {
-    // const newState = update(this.state, {
-    //   page: { $set: pager.currentPage },
-    // });
-
-    // this.setState(newState, () => {
     this.setState(update(this.state, { loading: { $set: true } }));
     this._fetch(pager.currentPage);
-    // });
+  }
+
+  _typeSearch(query) {
+    this.setState(update(this.state, { query: { $set: query } }));
+  }
+
+  _searchSubmit(e, query) {
+    this.setState(update(this.state, { query: { $set: query } }));
+    this._fetch(1);
+  }
+
+  _extractCols(props) {
+    return React.Children.map(props.children, child => {
+      return { label: child.props.label, accessor: child.props.accessor };
+    });
   }
 
   render() {
@@ -87,30 +109,34 @@ class ListPage extends Component {
                 </button>
               </div>
               <div className="sv-column sv-vertical-marged-10">
-                <form className="sv-form">
-                  <div className="sv-input-group">
-                    <input type="search" className="on-first" placeholder={this.props.searchPlaceHolder} />
-                    <button className="sv-button info at-last">Pesquisar</button>
-                  </div>
-                </form>
+                <SimpleSearch
+                  query={this.state.query}
+                  placeholder={this.props.searchPlaceHolder}
+                  onType={this._typeSearch}
+                  onSubmit={this._searchSubmit}
+                />
               </div>
             </div>
           </caption>
           <thead>
             <tr>
-              <th>Name</th>
+              {this.cols.map(col => (
+                <th key={nanoid()}>{col.label}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {this.state.data.map(d => (
-              <tr key={d.url}>
-                <td>{d.name}</td>
+              <tr key={nanoid()}>
+                {this.cols.map(col => (
+                  <td key={nanoid()}>{d[col.accessor]}</td>
+                ))}
               </tr>
             ))}
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="1" className="sv-text-center">
+              <td colSpan={this.cols.length} className="sv-text-center">
                 {this.state.loaded && (
                   <Paginator
                     page={this.state.page}

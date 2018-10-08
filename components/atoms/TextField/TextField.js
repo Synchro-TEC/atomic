@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage, ...otherProps }) => {
+const TextField = ({ label, value, disabled, type, onChange, hintInfo, errorMessage, inLine, ...otherProps }) => {
   let labelOpts = {};
 
   if (hintInfo) {
@@ -27,10 +27,16 @@ const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage, ..
 
   const inputProps = Object.assign(inputOptions, otherProps);
 
+  let labelProps = {};
+
+  if (inLine) {
+    labelProps.style = { display: 'inline-block' };
+  }
+
   return (
-    <label>
+    <label {...labelProps}>
       <span {...labelOpts}>{label}</span>
-      <input {...inputProps} />
+      <input value={value} {...inputProps} />
     </label>
   );
 };
@@ -38,11 +44,14 @@ const TextField = ({ label, disabled, type, onChange, hintInfo, errorMessage, ..
 TextField.defaultProps = {
   type: 'text',
   disabled: false,
+  inLine: false,
 };
 
 TextField.propTypes = {
   errorMessage: PropTypes.string,
+  value: PropTypes.string,
   disabled: PropTypes.bool,
+  inLine: PropTypes.bool,
   hintInfo: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
