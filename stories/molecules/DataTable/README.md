@@ -1,0 +1,1 @@
+The `<DataTable>` component is a button.

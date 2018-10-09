@@ -2,14 +2,12 @@ import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
 import JSXAddon from 'storybook-addon-jsx';
+import ListPage from './ListPage/';
 
 setAddon(JSXAddon);
 
-import ListPage from './ListPage/';
-
-const stories = storiesOf('Templates', module);
+const stories = storiesOf('Organisms', module);
 
 const storyWrapper = story => {
   return <div style={{ margin: '35px' }}>{story()}</div>;

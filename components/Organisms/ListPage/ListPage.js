@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import nanoid from 'nanoid';
 import update from 'react-addons-update';
+import DataTable from '../../molecules/DataTable/index';
 import Paginator from '../../molecules/Paginator/Paginator';
 import SimpleSearch from '../../molecules/SimpleSearch/SimpleSearch';
 import Loader from '../../atoms/Loader/Loader';
+import Row from '../../atoms/Row/Row';
+import Col from '../../atoms/Col/Col';
 
 class ListPage extends Component {
   constructor(props) {
@@ -84,10 +86,10 @@ class ListPage extends Component {
           <div
             style={{
               position: 'absolute',
-              top: '43px',
+              top: '54px',
               left: '0',
               width: '100%',
-              height: 'calc(100% - 43px)',
+              height: 'calc(100% - 44px)',
               zIndex: '10',
               backgroundColor: 'rgba(0,0,0,0.1)',
               padding: '50px',
@@ -99,58 +101,37 @@ class ListPage extends Component {
         ) : (
           ''
         )}
-        <table className="sv-table with--borders with--hover">
-          <caption>
-            <div className="sv-row">
-              <div className="sv-column sv-vertical-marged-10">
-                <button className="sv-button info sv-pull-left">
-                  <i className="fa fa-plus fa-fw" />
-                  Add
-                </button>
-              </div>
-              <div className="sv-column sv-vertical-marged-10">
-                <SimpleSearch
-                  query={this.state.query}
-                  placeholder={this.props.searchPlaceHolder}
-                  onType={this._typeSearch}
-                  onSubmit={this._searchSubmit}
-                />
-              </div>
-            </div>
-          </caption>
-          <thead>
-            <tr>
-              {this.cols.map(col => (
-                <th key={nanoid()}>{col.label}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.data.map(d => (
-              <tr key={nanoid()}>
-                {this.cols.map(col => (
-                  <td key={nanoid()}>{d[col.accessor]}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={this.cols.length} className="sv-text-center">
-                {this.state.loaded && (
-                  <Paginator
-                    page={this.state.page}
-                    limit={this.state.limit}
-                    total={this.state.count}
-                    onGoToNext={pager => this._goTo(pager)}
-                    onGoToPage={pager => this._goTo(pager)}
-                    onGoToPrevious={pager => this._goTo(pager)}
-                  />
-                )}
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+        <Row>
+          <Col className="sv-column sv-vertical-marged-10">
+            <button className="sv-button info sv-pull-left">
+              <i className="fa fa-plus fa-fw" />
+              Add
+            </button>
+          </Col>
+          <Col className="sv-vertical-marged-10">
+            <SimpleSearch
+              query={this.state.query}
+              placeholder={this.props.searchPlaceHolder}
+              onType={this._typeSearch}
+              onSubmit={this._searchSubmit}
+            />
+          </Col>
+        </Row>
+        <DataTable cols={this.cols} data={this.state.data} />
+        <Row>
+          <Col>
+            {this.state.loaded && (
+              <Paginator
+                page={this.state.page}
+                limit={this.state.limit}
+                total={this.state.count}
+                onGoToNext={pager => this._goTo(pager)}
+                onGoToPage={pager => this._goTo(pager)}
+                onGoToPrevious={pager => this._goTo(pager)}
+              />
+            )}
+          </Col>
+        </Row>
       </div>
     );
   }
