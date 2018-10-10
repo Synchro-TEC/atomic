@@ -5,6 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import JSXAddon from 'storybook-addon-jsx';
 import Paginator from './Paginator/';
 import DataTable from './DataTable/';
+import Selector from './Selector/';
 
 setAddon(JSXAddon);
 
@@ -18,4 +19,5 @@ stories
   .addDecorator(storyWrapper)
   .addDecorator(withKnobs)
   .addWithJSX('Paginator', withReadme(...Paginator))
+  .addWithJSX('Selector', withReadme(...Selector))
   .addWithJSX('DataTable', withReadme(...DataTable));

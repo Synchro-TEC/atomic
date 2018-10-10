@@ -1,0 +1,1 @@
+The `<Selector>` component is a button.
