@@ -5,9 +5,10 @@ import { ListPage, ListCol } from '../../../components/Organisms/ListPage/index'
 const component = () => {
   return (
     <React.Fragment>
-      <ListPage resourceUrl="https://swapi.co/api/people/">
+      <ListPage resourceUrl="http://localhost:9002/people">
         <ListCol label="Nome" accessor="name" />
-        <ListCol label="Genero" accessor="gender" type="string" filterable />
+        <ListCol label="Genero" accessor="gender" type="string" />
+        <ListCol label="Email" accessor="email" type="string" />
         <ListCol
           accessor={rowData => (
             <a

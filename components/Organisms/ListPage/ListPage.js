@@ -13,16 +13,13 @@ class ListPage extends Component {
   constructor(props) {
     super(props);
 
-    this.resultKey = 'results';
-    this.countKey = 'count';
-
     this.state = {
       loaded: false,
       loading: true,
       page: 1,
-      limit: 10,
       count: null,
       data: [],
+      dataToShow: [],
       query: '',
     };
 
@@ -37,22 +34,21 @@ class ListPage extends Component {
     this._fetch();
   }
 
-  _fetch(page = this.state.page) {
+  _fetch() {
     this.setState(update(this.state, { loading: { $set: true } }));
-
-    let url = `${this.props.resourceUrl}?page=${page}`;
+    let url = `${this.props.resourceUrl}`;
 
     if (this.state.query.trim() !== '') {
-      url += `&search=${this.state.query}`;
+      url += `?q=${this.state.query}`;
     }
 
     axios.get(url).then(response => {
-      const data = response.data[this.resultKey];
+      const data = response.data;
       const newState = update(this.state, {
         loaded: { $set: true },
-        count: { $set: response.data[this.countKey] },
+        count: { $set: response.data.length },
         data: { $set: data },
-        page: { $set: page },
+        dataToShow: { $set: data.slice(this.state.page, this.props.pageSize) },
         loading: { $set: false },
       });
       this.setState(newState);
@@ -60,8 +56,8 @@ class ListPage extends Component {
   }
 
   _goTo(pager) {
-    this.setState(update(this.state, { loading: { $set: true } }));
-    this._fetch(pager.currentPage);
+    const data = this.state.data.slice(pager.offset, pager.limit * pager.currentPage);
+    this.setState(update(this.state, { dataToShow: { $set: data }, page: { $set: pager.currentPage } }));
   }
 
   _typeSearch(query) {
@@ -69,8 +65,8 @@ class ListPage extends Component {
   }
 
   _searchSubmit(e, query) {
-    this.setState(update(this.state, { query: { $set: query } }));
-    this._fetch(1);
+    this.setState(update(this.state, { query: { $set: query }, page: { $set: 1 } }));
+    this._fetch();
   }
 
   _extractCols(props) {
@@ -117,14 +113,14 @@ class ListPage extends Component {
             />
           </Col>
         </Row>
-        <DataTable cols={this.cols} data={this.state.data} />
+        <DataTable cols={this.cols} data={this.state.dataToShow} />
         <Row>
           <Col>
             {this.state.loaded && (
               <Paginator
                 page={this.state.page}
-                limit={this.state.limit}
-                total={this.state.count}
+                limit={this.props.pageSize}
+                total={this.state.data.length}
                 onGoToNext={pager => this._goTo(pager)}
                 onGoToPage={pager => this._goTo(pager)}
                 onGoToPrevious={pager => this._goTo(pager)}
@@ -139,9 +135,11 @@ class ListPage extends Component {
 
 ListPage.defaultProps = {
   searchPlaceHolder: 'Pesquisar',
+  pageSize: 15,
 };
 
 ListPage.propTypes = {
+  pageSize: PropTypes.number,
   resourceUrl: PropTypes.string.isRequired,
   searchPlaceHolder: PropTypes.string,
   newButtom: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
