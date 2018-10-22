@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Component Render the select 1`] = `
+<label>
+  <span />
+  <div
+    className="sv-select"
+  >
+    <select
+      className=""
+    >
+      <option
+        key="4B0wB1ux8iyZeeuKMBupi"
+        value="v"
+      >
+        k
+      </option>
+      <option
+        key="CAPJlWMi7Asag91w8leIN"
+        value="v1"
+      >
+        k1
+      </option>
+    </select>
+    <label>
+      <i
+        className="fa fa-angle-down fa-fw"
+      />
+    </label>
+  </div>
+</label>
+`;

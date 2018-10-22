@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginator Component Render the pagginator 1`] = `
+<div
+  className="sv-paginate"
+>
+  <LinkButton
+    className="prev"
+    disabled={false}
+    onClick={[Function]}
+    theme="info"
+  >
+    <i
+      className="fa fa-chevron-left"
+    />
+    Anterior
+  </LinkButton>
+  <a
+    className="goto"
+    key="Jb3S5s6iWvrujFsrrlhV5"
+    onClick={[Function]}
+  >
+     
+    1
+     
+  </a>
+  <em
+    key="5ryFk~CKlZ5egV8ltfOM2"
+  >
+     
+    2
+     
+  </em>
+  <a
+    className="goto"
+    key="a06_nSyD0wMwLn0R3S4lL"
+    onClick={[Function]}
+  >
+     
+    3
+     
+  </a>
+  <a
+    className="goto"
+    key="v~d5Glwxm3sdLEHw2ZzIC"
+    onClick={[Function]}
+  >
+     
+    4
+     
+  </a>
+  <LinkButton
+    className="next"
+    disabled={false}
+    onClick={[Function]}
+    theme="info"
+  >
+    Próximo
+    <i
+      className="fa fa-chevron-right"
+    />
+  </LinkButton>
+</div>
+`;

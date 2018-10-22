@@ -61,7 +61,7 @@ SelectField.defaultProps = {
 };
 
 SelectField.propTypes = {
-  options: PropTypes.array,
+  options: PropTypes.array.isRequired,
   /** Pode ser a key do objeto ou uma function que recebe o obejeto corrente como parâmetro e deve retorna um valor */
   optionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /** Pode ser a key do objeto ou uma function que recebe o obejeto corrente como parâmetro e deve retorna um valor */

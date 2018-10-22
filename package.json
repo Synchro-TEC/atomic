@@ -5,7 +5,19 @@
   "main": "index.js",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "api": "json-server --watch mock-api/db.json --port 9002"
+    "api": "json-server --watch mock-api/db.json --port 9002",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "./test/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -20,20 +32,27 @@
     "@storybook/addons": "^3.4.10",
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-plugin-react-docgen": "^2.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
     "prettier": "^1.14.2",
     "prop-types": "^15.6.2",
     "raw-loader": "^0.5.1",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-test-renderer": "^16.5.2",
+    "regenerator-runtime": "^0.12.1",
     "storybook-addon-jsx": "^5.4.0",
     "storybook-readme": "^4.0.0-beta1",
     "style-loader": "^0.23.0"

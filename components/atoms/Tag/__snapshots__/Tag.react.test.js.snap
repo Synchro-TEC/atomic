@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag Component Render the button 1`] = `
+<div
+  className="sv-tag default"
+>
+  <span
+    className="sv-tag__close"
+  >
+    ×
+  </span>
+  <span
+    className="sv-tag__content"
+  >
+    The Tag
+  </span>
+</div>
+`;

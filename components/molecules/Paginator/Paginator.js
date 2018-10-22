@@ -44,7 +44,7 @@ const Paginator = ({ page, limit, total, onGoToNext, onGoToPrevious, onGoToPage 
         option = <em key={nanoid()}> {i} </em>;
       } else {
         option = (
-          <a key={nanoid()} onClick={e => goToPage(e)}>
+          <a key={nanoid()} className="goto" onClick={e => goToPage(e)}>
             {' '}
             {i}{' '}
           </a>
@@ -138,12 +138,17 @@ const Paginator = ({ page, limit, total, onGoToNext, onGoToPrevious, onGoToPage 
 
   return (
     <div className="sv-paginate">
-      <LinkButton theme="info" disabled={currentPage === 1 || totalOfPieces === 0} onClick={goToPrevious}>
+      <LinkButton
+        theme="info"
+        className="prev"
+        disabled={currentPage === 1 || totalOfPieces === 0}
+        onClick={goToPrevious}
+      >
         <i className="fa fa-chevron-left" />
         Anterior
       </LinkButton>
       {paginateOptions}
-      <LinkButton theme="info" disabled={totalOfPieces <= currentPage} onClick={goToNext}>
+      <LinkButton theme="info" className="next" disabled={totalOfPieces <= currentPage} onClick={goToNext}>
         Próximo
         <i className="fa fa-chevron-right" />
       </LinkButton>

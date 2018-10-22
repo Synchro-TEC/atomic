@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable Component Render DataTable Component 1`] = `
+<table
+  className="sv-table with--borders with--hover"
+>
+  <thead>
+    <tr />
+  </thead>
+  <tbody />
+</table>
+`;

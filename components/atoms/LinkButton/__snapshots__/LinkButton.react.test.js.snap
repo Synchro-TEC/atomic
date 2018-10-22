@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkButton Button Component Render the button 1`] = `
+<button
+  className="sv-button link link-default"
+>
+  The Button
+</button>
+`;

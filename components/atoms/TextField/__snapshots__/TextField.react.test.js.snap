@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField Component Render the TextField 1`] = `
+<label>
+  <span />
+  <input
+    className=""
+    type="text"
+  />
+</label>
+`;

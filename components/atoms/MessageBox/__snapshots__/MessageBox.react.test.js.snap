@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBox Component Render MessageBox 1`] = `
+<div
+  className="sv-messagebox info"
+>
+  <button
+    className="sv-messagebox__close"
+  >
+    ×
+  </button>
+  <header>
+    <h6 />
+  </header>
+  <main>
+    My MessageBox
+  </main>
+</div>
+`;
